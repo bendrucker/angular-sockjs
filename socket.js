@@ -10,9 +10,6 @@
 angular.module('bd.sockjs', [])
   .provider('socketFactory', function () {
 
-    // when forwarding events, prefix the event name
-    var ioSocket;
-
     // expose to provider
     this.$get = function ($timeout) {
 
