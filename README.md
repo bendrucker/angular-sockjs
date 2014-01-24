@@ -1,6 +1,8 @@
 # angular-sockjs
 Bower Component for using AngularJS with [SockJS](https://github.com/sockjs/sockjs-client).
 
+Based on [Brian Ford's angular-socket-io](https://github.com/btford/angular-socket-io). 
+
 
 ## Install
 
