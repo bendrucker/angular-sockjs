@@ -9,137 +9,83 @@
 
 describe('socketFactory', function () {
 
-  beforeEach(module('btford.socket-io'));
+  beforeEach(module('bd.sockjs'));
 
   var socket,
-      scope,
       $timeout,
       $browser,
-      mockIoSocket,
+      mockSocket,
       spy;
 
-  beforeEach(inject(function (socketFactory, _$browser_, $rootScope, _$timeout_) {
-    $browser = _$browser_;
+  beforeEach(inject(function (socketFactory, _$timeout_) {
     $timeout = _$timeout_;
-    scope = $rootScope.$new();
-    spy = jasmine.createSpy('emitSpy');
-    mockIoSocket = io.connect();
+    spy = sinon.spy();
+    mockSocket = new SockJS();
     socket = socketFactory({
-      ioSocket: mockIoSocket,
-      scope: scope
+      socket: mockSocket
     });
   }));
 
 
-  describe('#on', function () {
+  describe('#setHandler', function () {
 
-    it('should apply asynchronously', function () {
-      socket.on('event', spy);
+    beforeEach(function () {
+      this.setHandler = socket.setHandler('open', spy);
+    });
 
-      mockIoSocket.emit('event');
+    it('sets the handler on the socket instance', function () {
+      expect(mockSocket)
+        .to.have.property('onopen')
+        .that.is.a('function');
+    });
 
-      expect(spy).not.toHaveBeenCalled();
+    it('wraps the handler to apply asynchronously', function () {
+      mockSocket.onopen();
+      sinon.assert.notCalled(spy);
+
       $timeout.flush();
+      sinon.assert.called(spy);
+    });
 
-      expect(spy).toHaveBeenCalled();
+    it('is chainable', function () {
+      expect(this.setHandler).to.equal(socket);
+    });
+
+  });
+
+  describe('#removeHandler', function () {
+
+    beforeEach(function () {
+      socket.setHandler('open', spy);
+      this.removeHandler = socket.removeHandler('open', spy);
+    });
+
+    it('removes the callback from the socket', function () {
+      expect(mockSocket)
+        .to.not.have
+        .property('onopen');
+    });
+
+    it('is chainable', function () {
+      expect(this.removeHandler).to.equal(socket);
     });
 
   });
 
 
-  describe('#emit', function () {
+  ['send', 'close'].forEach(function (method) {
 
-    it('should call the delegate socket\'s emit', function () {
-      spyOn(mockIoSocket, 'emit');
+    describe('#' + method, function () {
 
-      socket.emit('event', {foo: 'bar'});
-
-      expect(mockIoSocket.emit).toHaveBeenCalled();
-    });
-
-  });
-
-
-  describe('#removeListener', function () {
-
-    it('should not call after removing an event', function () {
-      socket.on('event', spy);
-      socket.removeListener('event', spy);
-
-      mockIoSocket.emit('event');
-
-      expect($browser.deferredFns.length).toBe(0);
-    });
-
-  });
-
-
-  describe('#forward', function () {
-
-    it('should forward events', function () {
-      socket.forward('event');
-
-      scope.$on('socket:event', spy);
-      mockIoSocket.emit('event');
-      $timeout.flush();
-
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('should forward an array of events', function () {
-      socket.forward(['e1', 'e2']);
-
-      scope.$on('socket:e1', spy);
-      scope.$on('socket:e2', spy);
-
-      mockIoSocket.emit('e1');
-      mockIoSocket.emit('e2');
-      $timeout.flush();
-      expect(spy.callCount).toBe(2);
-    });
-
-    it('should remove watchers when the scope is removed', function () {
-
-      socket.forward('event');
-      scope.$on('socket:event', spy);
-      mockIoSocket.emit('event');
-      $timeout.flush();
-
-      expect(spy).toHaveBeenCalled();
-
-      scope.$destroy();
-      spy.reset();
-      mockIoSocket.emit('event');
-      expect(spy).not.toHaveBeenCalled();
-    });
-
-    it('should use the specified prefix', inject(function (socketFactory) {
-      var socket = socketFactory({
-        ioSocket: mockIoSocket,
-        scope: scope,
-        prefix: 'custom:'
+      it('passes through to the socket', function () {
+        mockSocket[method] = sinon.spy();
+        socket[method]('m');
+        sinon.assert.calledWith(mockSocket[method], 'm');
+        sinon.assert.calledOn(mockSocket[method], mockSocket);
       });
 
-      socket.forward('event');
-
-      scope.$on('custom:event', spy);
-      mockIoSocket.emit('event');
-      $timeout.flush();
-
-      expect(spy).toHaveBeenCalled();
-    }));
-
-    it('should forward to the specified scope when one is provided', function () {
-      var child = scope.$new();
-      spyOn(child, '$broadcast');
-      socket.forward('event', child);
-
-      scope.$on('socket:event', spy);
-      mockIoSocket.emit('event');
-      $timeout.flush();
-
-      expect(child.$broadcast).toHaveBeenCalled();
     });
+
   });
 
 });
