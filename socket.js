@@ -1,5 +1,5 @@
 /*
- * angular-sockjs v0.0.1
+ * angular-sockjs v0.0.2
  * (c) 2014 Ben Drucker http://bendrucker.me
  * Based on https://github.com/btford/angular-socket-io
  * License: MIT

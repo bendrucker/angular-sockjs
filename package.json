@@ -1,14 +1,25 @@
 {
   "name": "angular-sockjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "socket.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "./node_modules/.bin/karma start --browsers Firefox --single-run"
   },
-  "author": "Ben Drucker",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bendrucker/angular-sockjs.git"
+  },
+  "keywords": [
+    "angular",
+    "WebSockets",
+    "SockJS",
+    "realtime"
+  ],
+  "bugs": {
+    "url": "https://github.com/bendrucker/angular-sockjs/issues"
+  },
+  "homepage": "https://github.com/bendrucker/angular-sockjs",
+  "author": "Ben Drucker <bvdrucker@gmail.com> (http://bendrucker.me)",
   "license": "MIT",
   "devDependencies": {
     "karma": "~0.10.2",
