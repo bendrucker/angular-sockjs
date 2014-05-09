@@ -1,4 +1,4 @@
-# angular-sockjs [![Build Status](https://travis-ci.org/valet-io/angular-sockjs.png?branch=master)](https://travis-ci.org/valet-io/angular-sockjs)
+# angular-sockjs [![Build Status](https://travis-ci.org/bendrucker/angular-sockjs.png?branch=master)](https://travis-ci.org/bendrucker/angular-sockjs)
 Bower Component for using AngularJS with [SockJS](https://github.com/sockjs/sockjs-client).
 
 Based on [Brian Ford's angular-socket-io](https://github.com/btford/angular-socket-io). 
