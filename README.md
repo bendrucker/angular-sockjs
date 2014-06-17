@@ -26,7 +26,7 @@ angular.module('myApp', [
   'bd.sockjs',
   'myApp.MyCtrl'
 ])
-.factory('mySocket', function (socketFactory)) {
+.factory('mySocket', function (socketFactory) {
   return socketFactory();
 });
 ```
@@ -79,7 +79,7 @@ This is useful if you need to hold a reference to the `sockjs` object for use el
 angular.module('myApp', [
   'bd.sockjs'
 ])
-.factory('mySocket', function (socketFactory)) {
+.factory('mySocket', function (socketFactory) {
   var sockjs = new SockJS('http://host');
 
   mySocket = socketFactory({
