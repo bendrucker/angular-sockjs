@@ -1,0 +1,9 @@
+test/
+components/
+.bowerrc
+.jshintrc
+src/.jshintrc
+bower.json
+.travis.yml
+.npmignore
+karma.conf.js
