@@ -1,8 +1,17 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 before_script:
-  - npm install -g bower
-  - bower install
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- npm install -g bower
+- bower install
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+deploy:
+  provider: npm
+  email: bvdrucker@gmail.com
+  api_key:
+    secure: 0gVubK2LyYGDMF886077YWgIPtzC71KSawi7ok8QMYS7HzbziOX1R1yMr4ORy14ulRbAsMCiA48F6AsqvjuBvAH69TWXWG6RD6DE1+wluuix4RJP4icOtJGxE8ycAHKwvO3mNECHf7tdO+BTc4x3OLgU/AghnwZh1zcDigYALvI=
+  on:
+    tags: true
+    all_branches: true
+    repo: bendrucker/angular-sockjs
