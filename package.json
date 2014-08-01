@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "main": "socket.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --browsers Firefox --single-run"
+    "test": "karma start --browsers Firefox --single-run"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,12 @@
   "author": "Ben Drucker <bvdrucker@gmail.com> (http://bendrucker.me)",
   "license": "MIT",
   "devDependencies": {
-    "karma": "~0.10.2",
-    "karma-chai": "0.0.2",
-    "mocha": "~1.17.1",
-    "karma-mocha": "~0.1.1",
-    "karma-sinon": "~1.0.0"
+    "chai": "~1.9.1",
+    "karma": "~0.12.19",
+    "karma-chai": "~0.1.0",
+    "karma-cli": "0.0.4",
+    "karma-mocha": "~0.1.6",
+    "karma-sinon": "~1.0.3",
+    "mocha": "~1.21.3"
   }
 }
