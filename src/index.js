@@ -1,17 +1,11 @@
-/*
- * angular-sockjs v0.0.2
- * (c) 2014 Ben Drucker http://bendrucker.me
- * Based on https://github.com/btford/angular-socket-io
- * License: MIT
- */
-
 'use strict';
 
 angular.module('bd.sockjs', [])
+  .value('SockJS', window.SockJS)
   .provider('socketFactory', function () {
 
     // expose to provider
-    this.$get = function ($timeout) {
+    this.$get = function (SockJS, $timeout) {
 
       var asyncAngularify = function (socket, callback) {
         return callback ? function () {
@@ -47,4 +41,7 @@ angular.module('bd.sockjs', [])
         return wrappedSocket;
       };
     };
+
+    this.$get.$inject = ['SockJS', '$timeout'];
+
   });
