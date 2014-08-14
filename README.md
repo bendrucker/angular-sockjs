@@ -45,7 +45,12 @@ angular.module('myApp', [
   'myApp.MyCtrl'
 ])
 .factory('mySocket', function (socketFactory)) {
-  return socketFactory();
+  return socketFactory({
+    url: 'https://example.com'
+  });
+})
+.controller('MyController', function (mySocket) {
+  // ...
 });
 ```
 
