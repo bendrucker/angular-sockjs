@@ -1,5 +1,6 @@
 'use strict';
 
-angular.module('bd.sockjs', [])
+module.exports = angular.module('sockjs', [])
   .value('SockJS', require('sockjs-client'))
-  .factory('socketFactory', require('./factory'));
+  .factory('socketFactory', require('./factory'))
+  .name;
