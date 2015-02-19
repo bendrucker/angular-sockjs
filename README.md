@@ -44,7 +44,7 @@ angular.module('myApp', [
   'bd.sockjs',
   'myApp.MyCtrl'
 ])
-.factory('mySocket', function (socketFactory)) {
+.factory('mySocket', function (socketFactory) {
   return socketFactory({
     url: 'https://example.com'
   });
