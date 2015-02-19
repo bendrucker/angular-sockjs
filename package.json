@@ -21,14 +21,30 @@
   "homepage": "https://github.com/bendrucker/angular-sockjs",
   "author": "Ben Drucker <bvdrucker@gmail.com> (http://bendrucker.me)",
   "license": "MIT",
+  "peerDependencies": {
+    "angular": "^1.3.0"
+  },
   "devDependencies": {
+    "angular": "~1.3.13",
+    "angular-mocks": "~1.3.13",
+    "browserify": "~8.1.3",
     "chai": "~2.0.0",
     "karma": "~0.12.31",
+    "karma-browserify": "~3.0.2",
     "karma-chai": "~0.1.0",
     "karma-cli": "0.0.4",
     "karma-firefox-launcher": "~0.1.4",
     "karma-mocha": "~0.1.10",
     "karma-sinon": "~1.0.4",
-    "mocha": "~2.1.0"
+    "mocha": "~2.1.0",
+    "proxyquireify": "~1.2.1"
+  },
+  "browserify-shim": {
+    "angular": "global:angular"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }

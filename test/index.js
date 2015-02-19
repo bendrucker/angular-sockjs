@@ -1,15 +1,16 @@
 'use strict';
 
+var proxyquire = require('proxyquireify')(require);
+var sinon      = require('sinon');
+var expect     = require('chai').expect;
+
 describe('socketFactory', function () {
 
   var socket, socketFactory, $timeout, SockJS, sockJS, spy;
-  beforeEach(module('bd.sockjs'));
-  beforeEach(module(function ($provide) {
-    $provide.factory('SockJS', function () {
-      return sinon.spy();
-    });
-  }));
-  beforeEach(inject(function (_socketFactory_, _$timeout_, _SockJS_) {
+  beforeEach(angular.mock.module(proxyquire('../', {
+    'sockjs-client': sinon.spy()
+  })));
+  beforeEach(angular.mock.inject(function (_socketFactory_, _$timeout_, _SockJS_) {
     socketFactory = _socketFactory_;
     $timeout = _$timeout_;
     SockJS = _SockJS_;
