@@ -1,12 +1,14 @@
 'use strict';
 
-var proxyquire = require('proxyquireify')(require);
-var sinon      = require('sinon');
-var expect     = require('chai').expect;
+import angular from 'angular';
+import sinon from 'sinon';
+import {expect} from 'chai';
+
+const proxyquire = require('proxyquireify')(require);
 
 describe('socketFactory', function () {
 
-  var socket, socketFactory, $timeout, SockJS, sockJS, spy;
+  let socket, socketFactory, $timeout, SockJS, sockJS, spy;
   beforeEach(angular.mock.module(proxyquire('../', {
     'sockjs-client': sinon.spy()
   })));
@@ -36,7 +38,7 @@ describe('socketFactory', function () {
 
   describe('#setHandler', function () {
 
-    var setHandler;
+    let setHandler;
     beforeEach(function () {
       setHandler = socket.setHandler('open', spy);
     });
@@ -60,7 +62,7 @@ describe('socketFactory', function () {
 
   describe('#removeHandler', function () {
 
-    var removeHandler;
+    let removeHandler;
     beforeEach(function () {
       socket.setHandler('open', spy);
       removeHandler = socket.removeHandler('open', spy);

@@ -37,14 +37,19 @@
     "karma-mocha": "~0.1.10",
     "karma-sinon": "~1.0.4",
     "mocha": "~2.1.0",
-    "proxyquireify": "~1.2.1"
+    "proxyquireify": "~1.2.2"
   },
   "browserify-shim": {
     "angular": "global:angular"
   },
   "browserify": {
     "transform": [
+      "babelify",
       "browserify-shim"
     ]
+  },
+  "dependencies": {
+    "babelify": "~5.0.3",
+    "browserify-shim": "~3.8.3"
   }
 }

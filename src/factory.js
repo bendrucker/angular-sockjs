@@ -1,11 +1,12 @@
 'use strict';
 
-var angular = require('angular');
+import angular from 'angular';
 
-exports = module.exports = function (SockJS, $rootScope) {
+factory.$inject = ['SockJS', '$rootScope'];
+function factory (SockJS, $rootScope) {
   return function socketFactory (options) {
     options = options || {};
-    var socket = options.socket || new SockJS(options.url);
+    const socket = options.socket || new SockJS(options.url);
     
     return {
       setHandler: function (event, callback) {
@@ -28,11 +29,12 @@ exports = module.exports = function (SockJS, $rootScope) {
   function $applyAsync (socket, callback) {
     if (!callback) return angular.noop;
     return function $socketHandler () {
-      var args = arguments;
+      const args = arguments;
       $rootScope.$applyAsync(function $triggerSocketCallback () {
         callback.apply(socket, args);
       });
     };
   }
-};
-exports.$inject = ['SockJS', '$rootScope'];
+}
+
+export default factory;

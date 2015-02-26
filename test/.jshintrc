@@ -1,12 +1,8 @@
 {
-  "browser": true,
+  "node": true,
   "globals": {
-    "module": false,
-    "inject": false,
     "describe": false,
     "it": false,
-    "beforeEach": false,
-    "sinon": false,
-    "expect": false
+    "beforeEach": false
   }
 }
