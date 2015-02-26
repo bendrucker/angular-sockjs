@@ -1,9 +1,6 @@
 # angular-sockjs [![Build Status](https://travis-ci.org/bendrucker/angular-sockjs.png?branch=master)](https://travis-ci.org/bendrucker/angular-sockjs)
 [SockJS](https://github.com/sockjs/sockjs-client) provider for AngularJS.
 
-Based on [Brian Ford's angular-socket-io](https://github.com/btford/angular-socket-io). 
-
-
 ## Install
 
 1. `bower install angular-sockjs`
@@ -93,6 +90,3 @@ angular.module('myApp', [
 #### `socketFactory({url: })`
 
 This option allows you to provide a URL to pass through to the SockJS constructor.
-
-## License
-MIT
