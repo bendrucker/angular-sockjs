@@ -1,51 +1,35 @@
 # angular-sockjs [![Build Status](https://travis-ci.org/bendrucker/angular-sockjs.png?branch=master)](https://travis-ci.org/bendrucker/angular-sockjs)
 [SockJS](https://github.com/sockjs/sockjs-client) provider for AngularJS.
 
-## Install
+## Installing
 
-1. `bower install angular-sockjs`
-2. Made sure the [SockJS client library](https://github.com/sockjs/sockjs-client) is loaded.
-3. Include the `socket.js` script provided by this component into your app.
-4. Add `bd.sockjs` as a module dependency to your app.
+### npm
 
+```sh
+$ npm install --save angular-sockjs sockjs-client
+````
 
-## Usage
+[sockjs-client](https://www.npmjs.com/package/sockjs-client) is a peer dependency, so you can independently manage the version.
 
-This module exposes a `socketFactory`, which is an API for instantiating
-sockets that are integrated with Angular's digest cycle.
-
-
-### Making a Socket Instance
-
-```javascript
-// in the top-level module of the app
-angular.module('myApp', [
-  'bd.sockjs',
-  'myApp.MyCtrl'
-])
-.factory('mySocket', function (socketFactory) {
-  return socketFactory();
-});
+```js
+require('angular').module('myApp', [
+  require('angular-sockjs')
+]);
 ```
 
-With that, you can inject your `mySocket` service into controllers and
-other serivices within your application!
+### Bower
 
-### Using Your Socket Instance
-
-Building on the example above:
-
-```javascript
-// in the top-level module of the app
-angular.module('myApp', [
-  'bd.sockjs',
-  'myApp.MyCtrl'
-])
-.factory('mySocket', function (socketFactory)) {
-  return socketFactory();
-});
+```sh
+$ bower install angular-sockjs
 ```
 
+Include a script tag with `angular-sockjs/release/angular-sock.js` before your application. angular-sockjs expects to find the SockJS client as `window.SockJS`.
+
+```js
+angular.module('myApp', [
+  'sockjs'
+]);
+```
 
 ## API
 
