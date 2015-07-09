@@ -2,6 +2,7 @@
   "name": "angular-sockjs",
   "version": "0.1.0",
   "main": "socket.js",
+  "ignore": [],
   "dependencies": {
     "angular": ">= 1 < 2"
   },
