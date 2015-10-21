@@ -18,7 +18,7 @@ angular.module('bd.sockjs', [])
 
       return function socketFactory (options) {
         options = options || {};
-        var socket = options.socket || new SockJS(options.url);
+        var socket = options.socket || new SockJS(options.url, null, options);
 
         var wrappedSocket = {
           callbacks: {},
