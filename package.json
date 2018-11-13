@@ -22,13 +22,13 @@
   "author": "Ben Drucker <bvdrucker@gmail.com> (http://bendrucker.me)",
   "license": "MIT",
   "devDependencies": {
-    "chai": "~1.9.1",
-    "karma": "~0.12.19",
+    "chai": "~4.2.0",
+    "karma": "~3.1.1",
     "karma-chai": "~0.1.0",
-    "karma-cli": "0.0.4",
-    "karma-firefox-launcher": "~0.1.3",
-    "karma-mocha": "~0.1.6",
+    "karma-cli": "1.0.1",
+    "karma-firefox-launcher": "~1.1.0",
+    "karma-mocha": "~1.3.0",
     "karma-sinon": "~1.0.3",
-    "mocha": "~1.21.3"
+    "mocha": "~5.2.0"
   }
 }
