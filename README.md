@@ -1,4 +1,4 @@
-# angular-sockjs [![Build Status](https://travis-ci.org/bendrucker/angular-sockjs.png?branch=master)](https://travis-ci.org/bendrucker/angular-sockjs)
+# angular-sockjs [![Build Status](https://travis-ci.org/bendrucker/angular-sockjs.png?branch=master)](https://travis-ci.org/bendrucker/angular-sockjs) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/angular-sockjs.svg)](https://greenkeeper.io/)
 [SockJS](https://github.com/sockjs/sockjs-client) provider for AngularJS.
 
 Based on [Brian Ford's angular-socket-io](https://github.com/btford/angular-socket-io). 
